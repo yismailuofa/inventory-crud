@@ -23,12 +23,21 @@ export default function App() {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-row flex-wrap gap-4 justify-center">
       {products.map((product) => (
-        <div key={product.name} className="border-4 rounded-md">
-          <div className="text-3xl font-bold">{product.name}</div>
-          <div className="text-xl font-light">${product.price}</div>
-          <div className="text-xl font-light">{product.quantity}</div>
+        <div
+          key={product.name}
+          className="max-w-sm rounded-lg overflow-hidden shadow-lg border-4 border-gray-900 basis-1/4 aspect-square my-4 flex flex-col"
+        >
+          <div className="px-6 py-4 text-3xl font-bold mb-2 grow">
+            {product.name}
+          </div>
+          <div className="px-6 py-4 text-3xl text-gray-700">
+            Cost: ${product.price}
+          </div>
+          <div className="px-6 py-4 text-3xl text-gray-700">
+            Quantity: {product.quantity}
+          </div>
         </div>
       ))}
     </div>
