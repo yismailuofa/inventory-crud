@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "./firebase";
 
-function App() {
+export default function App() {
+  const [products, setProducts] = useState([]);
+
+  const ref = collection(db, "products");
+
+  const getProducts = () => {
+    onSnapshot(ref, (querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+      setProducts(items);
+    });
+  };
+
+  useEffect(() => {
+    getProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {products.map((product) => (
+        <div key={product.name} className="border-4 rounded-md">
+          <div className="text-3xl font-bold">{product.name}</div>
+          <div className="text-xl font-light">${product.price}</div>
+          <div className="text-xl font-light">{product.quantity}</div>
+        </div>
+      ))}
     </div>
   );
 }
-
-export default App;
