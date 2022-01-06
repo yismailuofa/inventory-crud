@@ -1,9 +1,10 @@
 # Inventory Manager 3000
+Find the project @ https://inventorycrud.netlify.app/
 ![Screen Shot 2022-01-06 at 2 01 46 AM](https://user-images.githubusercontent.com/59630201/148357322-5b4e878d-504a-493d-9185-6dfd8319902c.png)
 
 # How to use
 
-To run this project, use the website link because the API keys are private and so it can't be run locally unless you have them.
+To run this project, use the [website link](https://inventorycrud.netlify.app/) because the API keys are private and so it can't be run locally unless you have them.
 
 ## Create: 
 To create a new inventory item, hit the green button and fill in the details. Make sure you're filling in mostly nice numbers
